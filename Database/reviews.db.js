@@ -69,15 +69,13 @@ const readReviews = async (productId, page, count, sort) => {
 };
 
 const createReview = async () => {
-
 };
 
 const incrementHelpful = async () => {
-
 };
 
-const reportReview = async () => {}
-;
+const reportReview = async () => {
+};
 
 module.exports = {
   read: readReviews,
