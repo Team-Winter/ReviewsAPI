@@ -1,5 +1,7 @@
-const reviewsDb = require('./reviews.db');
+const reviews = require('./reviews.db');
+const metaReviews = require('./reviewsMeta.db');
 
 module.exports = {
-  reviewsDb,
+  reviews,
+  metaReviews,
 };
