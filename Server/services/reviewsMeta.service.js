@@ -1,8 +1,6 @@
-const { metaReviewsDB } = require('../../Database');
+const { metaReviews } = require('../../Database');
 
-const readMetaReviews = () => {
-  // call metaReviewsDB.read
-};
+const readMetaReviews = async (productId) => (metaReviews.read(productId));
 
 module.exports = {
   readMetaReviews,

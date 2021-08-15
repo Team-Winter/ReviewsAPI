@@ -13,4 +13,4 @@ const getMetaReviews = (req, res, next) => {
 
 module.exports = {
   get: getMetaReviews,
-}
+};
