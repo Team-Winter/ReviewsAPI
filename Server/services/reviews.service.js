@@ -35,9 +35,7 @@ const createReview = async () => {
 
 };
 
-const updateHelpful = async () => {
-
-};
+const updateHelpful = async (reviewId) => (reviews.update.incrementHelpful(reviewId));
 
 const updateReported = async () => {
 
