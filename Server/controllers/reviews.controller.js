@@ -3,7 +3,6 @@ const { reviews } = require('../services');
 const { readReviews, createReview, updateHelpful, updateReported } = reviews;
 
 const getReviews = (req, res, next) => {
-  // params and other req info stripped off here
   const { query } = req;
   const {
     product_id,
@@ -30,8 +29,6 @@ const getReviews = (req, res, next) => {
         res.sendStatus(500);
       }
     });
-  // call function fromn services that takes info from req (readReviews)
-  // send back response or handle error
 };
 
 const postReview = (req, res, next) => {

@@ -3,11 +3,23 @@ const { reviews } = require('../../Database');
 const readReviews = async (productId, page = 0, count = 5, sort) => {
   // set default for sort?
 
-  const results = await reviews.read(productId, page, count, sort);
+  let orderBy = 'reviews.date DESC'; // default case here
+  if (sort === 'relevent') {
+    // orderBy = '';
+  } else if (sort === 'helpful') {
+    orderBy = 'reviews.helpfulness DESC';
+  }
+  // } else if (sort === 'newest') {
+  // derfault case goes last with no if statement - remove newest?
+  // // might not need alltogether if I set default above
+  //   // orderBy = '';
+  // }
+
+  const results = await reviews.read(productId, count, count * page, orderBy);
   return {
     product: productId,
     page,
-    count,
+    count: results.length, // should this be count returned or count requested?
     results,
   };
 

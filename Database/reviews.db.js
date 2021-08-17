@@ -1,18 +1,12 @@
-const pool = require('./connection');
+const makeQuery = require('./connection');
 
-const readReviews = async (productId, page, count, sort) => {
-  // some sort of helper to verify the values are valid
-  let orderBy = 'reviews.date DESC'; // default case here
-  if (sort === 'relevent') {
-    // orderBy = '';
-  } else if (sort === 'helpful') {
-    orderBy = 'reviews.helpfulness DESC';
-  } else if (sort === 'newest') { // derfault case goes last with no if statement - remove newest?
-  // might not need alltogether if I set default above
-    // orderBy = '';
-  }
+const readReviews = async (productId, limit, offset, orderBy) => {
+  // create query before connecting to pool.
+  // probably negligible but avoids doing work while holding onto a client
+  // create slightly more space if pool connection fails - it was unnessary to create query
 
-  // const name = 'Get Product'; // can I name a query that cvhanges based on params or does it have to be an identical query?
+  // can I name a query that cvhanges based on params or does it have to be an identical query?
+  // const name = 'Get Product';
   const text = `SELECT reviews.id, reviews.rating, reviews.date, reviews.summary, reviews.body, reviews.recommended, reviews.reviewer_name, reviews.response, reviews.helpfulness, (
     SELECT COALESCE(json_agg(reviewPhotos), '[]'::JSON)
     FROM (
@@ -26,58 +20,66 @@ const readReviews = async (productId, page, count, sort) => {
   ORDER BY ${orderBy}
   LIMIT $2 OFFSET $3`;
 
-  const values = [productId, count, page * count];
+  const values = [productId, limit, offset];
   // page 0 is the first page, would need (page - 1) * count
   // for page 1 to be first page. consider later.
 
-  try {
-    console.log('---------------------------------------');
-    console.log('1.) Attempting to connect to Pool');
+  const query = {
+    text,
+    values,
+  };
 
-    const beforePoolConnect = new Date();
-    const client = await pool.connect();
-    const afterPoolConnect = new Date();
+  return makeQuery(query, 'READ REVIEWS');
 
-    console.log('2.) Successfully connected to Pool, client checked out. TIME TO CONNECT: ', afterPoolConnect - beforePoolConnect, ' ms');
-    try {
-      console.log('3.) Attempting to query DB for reviews');
+  // try {
+  //   console.log('----------- Read Reviews ------------');
+  //   console.log('1.) Attempting to connect to Pool');
 
-      const beforeQuery = new Date();
-      const queryRes = await client.query(text, values);
-      const afterQuery = new Date();
+  //   const beforePoolConnect = new Date();
+  //   const client = await pool.connect();
+  //   const afterPoolConnect = new Date();
 
-      console.log('4.) Successful query made for reviews. TIME TO QUERY: ', afterQuery - beforeQuery, ' ms');
-      return queryRes.rows;
-    } catch (err) {
-      console.log('4.) Error queryind data: ', err);
+  //   console.log('2.) Successfully connected to Pool, client checked out. TIME TO CONNECT: ', afterPoolConnect - beforePoolConnect, ' ms');
+  //   try {
+  //     // some sort of helper to verify the values are valid
+  //     console.log('3.) Attempting to query DB for reviews');
 
-      throw new Error('Error querying DB', { cause: err });
-    } finally {
-      console.log('5.) returning client to pool');
+  //     const beforeQuery = new Date();
+  //     const queryRes = await client.query(text, values);
+  //     const afterQuery = new Date();
 
-      client.release();
-      console.log('6.) client returned to pool');
-    }
-  } catch (err) {
-    if (err.message === 'Error querying DB') {
-      throw err;
-    }
+  //     console.log('4.) Successful query made for reviews. TIME TO QUERY: ', afterQuery - beforeQuery, ' ms');
+  //     return queryRes.rows;
+  //   } catch (err) {
+  //     console.log('4.) Error queryind data: ', err);
 
-    console.log('3.) Error connecting to pool: ', err);
-    throw new Error('DB Pool Connection Error', { cause: err });
-  }
+  //     throw new Error('Error querying DB', { cause: err });
+  //   } finally {
+  //     console.log('5.) returning client to pool');
+
+  //     client.release();
+  //     console.log('6.) client returned to pool');
+  //   }
+  // } catch (err) {
+  //   // handle error from inner try/catch block
+  //   if (err.message === 'Error querying DB') {
+  //     throw err;
+  //   }
+
+  //   // throw custom error if connection to pool fails
+  //   console.log('3.) Error connecting to pool: ', err);
+  //   throw new Error('DB Pool Connection Error', { cause: err });
+  // }
 };
 
 const createReview = async () => {
-
 };
 
 const incrementHelpful = async () => {
-
 };
 
-const reportReview = async () => {}
-;
+const reportReview = async () => {
+};
 
 module.exports = {
   read: readReviews,
