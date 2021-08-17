@@ -41,7 +41,15 @@ const incrementHelpful = async (reviewId) => {
   return makeQuery(query, `UPDATE REVIEW #${reviewId} HELPFUL`);
 };
 
-const reportReview = async () => {
+const reportReview = async (reviewId) => {
+  const text = `UPDATE reviews
+  SET reported = 't'
+  WHERE id = $1`;
+  const values = [reviewId];
+
+  const query = { text, values };
+
+  return makeQuery(query, `UPDATE REVIEW #${reviewId} REPORTED`);
 };
 
 module.exports = {
@@ -52,3 +60,11 @@ module.exports = {
     reportReview,
   },
 };
+// helpfulness default set to 0
+// response default set to null
+// reported default set to false
+// date default set to current time
+// id should auto increment
+// unique id required?
+
+INSERT INTO reviews (product_id, rating, summary, body, recommended, reviewer_name, reviewer_email)
