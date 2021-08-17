@@ -43,7 +43,7 @@ const incrementHelpful = (req, res, next) => {
   updateHelpful(review_id)
     .then(() => {
       console.log('7.) Sending back 204');
-      res.send(204);
+      res.sendStatus(204);
     })
     .catch((err) => {
       if (err.message === 'Error querying DB') {
@@ -61,7 +61,25 @@ const incrementHelpful = (req, res, next) => {
 };
 
 const reportReview = (req, res, next) => {
-  // call putReview from servicves
+  const { params } = req;
+  const { review_id } = params;
+  updateReported(review_id)
+    .then(() => {
+      console.log('7.) Sending back 204');
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      if (err.message === 'Error querying DB') {
+        console.log('7.) Sending back 400 error code');
+        res.sendStatus(400);
+      } else if (err.message === 'DB Pool Connection Error') {
+        console.log('7.) Sending back 500 error code');
+        res.sendStatus(500);
+      } else {
+        console.log('unknown Error: ', err);
+        res.sendStatus(500);
+      }
+    });
   // next();
 };
 
