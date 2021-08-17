@@ -37,9 +37,7 @@ const createReview = async () => {
 
 const updateHelpful = async (reviewId) => (reviews.update.incrementHelpful(reviewId));
 
-const updateReported = async () => {
-
-};
+const updateReported = async (reviewId) => (reviews.update.reportReview(reviewId));
 
 module.exports = {
   readReviews,
