@@ -1,4 +1,5 @@
 copy reviews
+-- from '/reviews.csv'
 from '/home/keanu/Documents/hackreactor/CO1813/sdc/Data/reviews.csv'
 delimiter ','
 CSV HEADER;
