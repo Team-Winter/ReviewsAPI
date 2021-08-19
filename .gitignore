@@ -1,4 +1,3 @@
-**/Data
-*.csv
+Data
 HR-sdc.pem
 node_modules
