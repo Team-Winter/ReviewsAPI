@@ -30,3 +30,21 @@ services:
     build:
       context: .
       dockerfile: postgres.Dockerfile
+
+  nginx:
+    image: sdc-nginx
+    container_name: sdc-nginx
+    ports:
+      - 3052:3052
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+
+  node2:
+    image: sdc-node2
+    container_name: sdc-node2
+    ports:
+      - 3000:3000 # move off 300 if deploying locally
+    build:
+      context: .
+      dockerfile: node.Dockerfile
