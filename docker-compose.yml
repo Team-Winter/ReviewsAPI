@@ -17,7 +17,7 @@ services:
       - 3000:3000
     build:
       context: .
-      dockerfile: node.dockerfile
+      dockerfile: node.Dockerfile
 
   postgres:
     image: sdc-postgres
