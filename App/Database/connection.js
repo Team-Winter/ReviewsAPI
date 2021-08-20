@@ -1,12 +1,12 @@
 const { Pool } = require('pg');
 
 const poolConfig = {
-  host: 'sdc-postgres',
+  host: '18.116.163.173', // local host on local machine sdc-postgres on local docker
   user: 'postgres', // 'keanu', on local machine
   max: 10,
   password: 'myCoolPassword',
   database: 'reviews',
-  port: '5432', // 5432 on local machine
+  port: '3001', // 5432 on local machine 5432 on local docker instance
   // config info here
   // if use a pword require config file and import pword from there
 };
