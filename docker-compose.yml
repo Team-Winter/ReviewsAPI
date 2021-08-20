@@ -18,8 +18,6 @@ services:
     build:
       context: .
       dockerfile: node.Dockerfile
-    depends_on:
-      - postgres
 
   postgres:
     image: sdc-postgres
