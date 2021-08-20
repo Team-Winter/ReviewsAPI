@@ -9,6 +9,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/reviews', router);
 
+app.get('./loaderio-e8dd4d0b20dfe5eb65ab2b654f19504a*', (req, res) => {
+  res.send('loaderio-e8dd4d0b20dfe5eb65ab2b654f19504a');
+});
+
 const port = 3000;
 
 app.listen(port, () => {
