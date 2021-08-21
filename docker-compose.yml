@@ -23,7 +23,7 @@ services:
     image: sdc-postgres
     container_name: sdc-postgres
     ports:
-      - 3001:5432
+      - 5432:5432
     environment:
       # POSTGRES_USER: postgres
       POSTGRES_PASSWORD: myCoolPassword
@@ -35,7 +35,7 @@ services:
     image: sdc-nginx
     container_name: sdc-nginx
     ports:
-      - 3052:3052
+      - 3000:3000 #change if running locally
     build:
       context: .
       dockerfile: nginx.Dockerfile
