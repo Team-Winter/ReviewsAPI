@@ -40,7 +40,7 @@ services:
       context: .
       dockerfile: nginx.Dockerfile
 
-  node2:
+  node2: # only need locally
     image: sdc-node2
     container_name: sdc-node2
     ports:
