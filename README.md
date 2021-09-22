@@ -26,7 +26,7 @@ System Design Capstone for Hackreactor. This is the reviews API for an eCommerce
 
 If you'd like to make changes to the code, clone the `local` branch, when a change is made rebuild the image where the change occured using `docker-compose build <ContainerName>`, then re-spin up the container using `docker-compose up <ContainerName>`.
 
-Using k6 the system can be load tested locally by running `k6 App/Server/tests/k6Scripts.js`
+Using [k6](https://k6.io/) the system can be load tested locally by running `k6 App/Server/tests/k6Scripts.js`. The test script sends requests to the nginx loadbalancer by communicating with `localhost:3005`.
 
 ## Changelog/Roadmap
 
