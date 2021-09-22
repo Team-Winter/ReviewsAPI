@@ -9,7 +9,7 @@ export const options = {
 
 export default function () {
   let product = Math.ceil(Math.random() * 1000000);
-  const res1 = http.get(`http://localhost:3000/reviews?product_id=${product}&page=0`);
+  const res1 = http.get(`http://localhost:3005/reviews?product_id=${product}&page=0`);
   // const res2 = http.get(`http://localhost:3000/reviews/meta?product_id=${product}`);
 
   // const res3 = http.get(`http://localhost:3000/reviews?product_id=${product}&page=1`);

@@ -23,7 +23,7 @@ services:
     image: sdc-postgres
     container_name: sdc-postgres
     ports:
-      - 5432:5432
+      - 3006:5432  # 5432:5432 for ec2 3006:5432 on local
     environment:
       # POSTGRES_USER: postgres
       POSTGRES_PASSWORD: myCoolPassword
@@ -35,7 +35,7 @@ services:
     image: sdc-nginx
     container_name: sdc-nginx
     ports:
-      - 3000:3000 #change if running locally
+      - 3005:3000 # move local port (left) off 3000 if deploying locally
     build:
       context: .
       dockerfile: nginx.Dockerfile
@@ -44,7 +44,7 @@ services:
     image: sdc-node2
     container_name: sdc-node2
     ports:
-      - 3000:3000 # move off 300 if deploying locally
+      - 3001:3000 # move local port (left) off 3000 if deploying locally
     build:
       context: .
       dockerfile: node.Dockerfile

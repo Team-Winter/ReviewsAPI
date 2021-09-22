@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
 const poolConfig = {
-  host: '18.118.134.222', // local host on local machine || sdc-postgres on local docker || postgres ip on ec2
+  host: 'sdc-postgres', // local host on local machine || sdc-postgres on local docker || postgres ip on ec2
   user: 'postgres', // 'keanu', on local machine || postgres in docker || postgres ec2
   max: 10,
   password: 'myCoolPassword',
