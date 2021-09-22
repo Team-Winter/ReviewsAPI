@@ -27,5 +27,7 @@ If you'd like to make changes to the code, clone the `local` branch, when a chan
 
 Using k6 the system can be load tested locally by running `k6 App/Server/tests/k6Scripts.js`
 
+## Deployment with AWS
+
 ## Results
 
