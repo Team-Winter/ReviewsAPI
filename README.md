@@ -33,7 +33,7 @@ Using k6 the system can be load tested locally by running `k6 App/Server/tests/k
 August 2021 - version 1.0 released
 
 __Future Plans__
-* improve load balancing to reach 10k RPS
+* Improve load balancing to reach 10k RPS
 * Hook up to the [frontend](https://github.com/Send-It-Industries/Front-End-Capstone)
 * Rewrite the database using mongoDB and compare the two databases
 * Write the other services for the front-end
