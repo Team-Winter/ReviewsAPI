@@ -12,6 +12,7 @@ System Design Capstone for Hackreactor. This is the reviews API for an eCommerce
 [Docker Compose](https://docs.docker.com/compose/install/) necessary for creating the docker images if running locally.
 
 ## Local Installation/Setup with Docker
+
 1. Clone the `local` branch of this repository or download its zip.
 2. navigate inside the directory using the console
 3. Download [`reviews.csv`](https://drive.google.com/file/d/1OCtJD8WhWS5MxVhBvsJAiG4GiWDdMGF3/view?usp=sharing) [`reviews_photos.csv`](https://drive.google.com/file/d/1VrOfjBWPCWrQ76CFZrEqenu4VMTwsjwk/view?usp=sharing) [`characteristics.csv`](https://drive.google.com/file/d/1Vw_ea1Y53igFBd2JXjU3PEkLp_byNff1/view?usp=sharing) [`characteristic_reviews.csv`](https://drive.google.com/file/d/1Rm2RaSuNth38440QlowBYN-69yAfq5rk/view?usp=sharing) data to the `Data` Folder
@@ -27,7 +28,25 @@ If you'd like to make changes to the code, clone the `local` branch, when a chan
 
 Using k6 the system can be load tested locally by running `k6 App/Server/tests/k6Scripts.js`
 
-## Deployment with AWS
+## Changelog/Roadmap
 
-## Results
+August 2021 - version 1.0 released
+
+__Future Plans__
+* improve load balancing to reach 10k RPS
+* Hook up to the [frontend](https://github.com/Send-It-Industries/Front-End-Capstone)
+* Rewrite the database using mongoDB and compare the two databases
+* Write the other services for the front-end
+
+<!-- ## Deployment with AWS
+
+1. Launch as many ec2 instances as needed (1 for each server needed, 1 for the nginx load balancer, and 1 for the postgres database)
+2. Update the ip adresses in the `.sh` files to reflect the ip adresses of the corresponding ec2 instance
+3. update the ip adress in the DB connection
+4. update the ip adresses in the `nginx.conf`
+5. run the connect shell command
+6. run the init script from the ec2 ssh terminal
+7. run ` docker-compose up <ContainerName>`
+
+## Results -->
 
