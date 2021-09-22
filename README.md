@@ -11,7 +11,7 @@ System Design Capstone for Hackreactor. This is the reviews API for an eCommerce
 [Docker](https://docs.docker.com/get-docker/) necessary for running the multiple containers the app is divided into.  
 [Docker Compose](https://docs.docker.com/compose/install/) necessary for creating the docker images if running locally.
 
-## Installation/Setup  
+## Local Installation/Setup  
 1. Clone the `local` branch of this repository or download its zip.
 2. navigate inside the directory using the console
 3. Download [`reviews.csv`](https://drive.google.com/file/d/1OCtJD8WhWS5MxVhBvsJAiG4GiWDdMGF3/view?usp=sharing) [`reviews_photos.csv`](https://drive.google.com/file/d/1VrOfjBWPCWrQ76CFZrEqenu4VMTwsjwk/view?usp=sharing) [`characteristics.csv`](https://drive.google.com/file/d/1Vw_ea1Y53igFBd2JXjU3PEkLp_byNff1/view?usp=sharing) [`characteristic_reviews.csv`](https://drive.google.com/file/d/1Rm2RaSuNth38440QlowBYN-69yAfq5rk/view?usp=sharing) data to the `Data` Folder
